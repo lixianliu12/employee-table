@@ -10,6 +10,14 @@ function Employee() {
         .catch(err => console.log(err));
     }, [])
 
+    const handleDelete = async (id) =>{
+        try {
+            await axios.delete('http://localhost:8081/employee/' + id)
+            window.location.reload()
+        }catch(err){
+            console.log(err);
+        }
+    }
   return (
     <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
       <div className='w-50 bg-white rounded p-3'>
@@ -34,7 +42,7 @@ function Employee() {
                             <td>{data.Salary}</td>
                             <td>
                                 <Link to={`update/${data.ID}`} className='btn btn-primary'>Edit</Link>
-                                <button className='btn btn-danger ms-2'>Delete</button>
+                                <button className='btn btn-danger ms-2' onClick={e =>handleDelete(data.ID) }>Delete</button>
                             </td>
                         </tr>
                     ))
