@@ -18,6 +18,7 @@ function Employee() {
                     <th>First name</th>
                     <th>Last name</th>
                     <th>Salary</th>
+                    <th>Action</th>
                 </tr>
                 
 
@@ -29,6 +30,10 @@ function Employee() {
                             <td>{data.Firstname}</td>
                             <td>{data.Lastname}</td>
                             <td>{data.Salary}</td>
+                            <td>
+                                <button className='btn btn-primary'>Edit</button>
+                                <button className='btn btn-danger ms-2'>Delete</button>
+                            </td>
                         </tr>
                     ))
                 }
