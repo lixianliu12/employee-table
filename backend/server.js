@@ -35,6 +35,21 @@ app.post('/create', (req, res) => {
     })
 })
 
+app.put('/update/:id', (req, res) => {
+    const sql = "UPDATE employees SET `Firstname` = ?, `Lastname` = ?, `Salary` = ? WHERE ID = ?";
+    const values = [
+        req.body.firstname,
+        req.body.lastname,
+        req.body.salary
+    ]
+    const id = req.params.id;
+
+    db.query(sql, [...values, id], (err, data) =>{
+        if(err) return res.json("Error");
+        return res.json(data);
+    })
+})
+
 app.listen(8081, () =>{
     console.log("listening");
 })
