@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 function CreateEmployee() {
     const [firstname, setFirstname] = useState('')
     const [lastname, setLastname] = useState('')
-    const [salary, setSalary] = useState()
+    const [salary, setSalary] = useState(0)
     const navigate = useNavigate();
 
     function handleSubmit(event){
@@ -24,18 +24,18 @@ function CreateEmployee() {
             <div className='mb-2'>
                 <label htmlFor="">First Name</label>
                 <input type='text' placeholder='Enter First Name' className='form-control' 
-                onChange={e => setFirstname(e.target.value)}></input>
+                onChange={e => setFirstname(e.target.value)} />
 
             </div>
             <div className='mb-2'>
                 <label htmlFor="">Last Name</label>
                 <input type='text' placeholder='Enter Last Name' className='form-control' 
-                onChange={e => setLastname(e.target.value)}></input>
+                onChange={e => setLastname(e.target.value)} />
             </div>
             <div className='mb-2'>
                 <label htmlFor="">Salary</label>
                 <input type='number' placeholder='Enter First Name' className='form-control' 
-                onChange={e => setSalary(e.target.value)}></input>
+                onChange={e => setSalary(e.target.value)} />
             </div>
             <button className='btn btn-success'>Submit</button>
         </form>
