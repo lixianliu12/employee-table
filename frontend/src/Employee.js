@@ -13,7 +13,7 @@ function Employee() {
   return (
     <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
       <div className='w-50 bg-white rounded p-3'>
-        <Link to="/create" className='btn btn-success'>Add Employee</Link>
+        
         <table className='table'>
             <thead>
                 <tr>
@@ -41,6 +41,7 @@ function Employee() {
                 }
             </tbody>
         </table>
+        <Link to="/create" className='btn btn-success'>Add Employee</Link>
       </div>
     </div>
   )
