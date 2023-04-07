@@ -39,7 +39,7 @@ function Employee() {
                         <tr key={i}>
                             <td>{data.Firstname}</td>
                             <td>{data.Lastname}</td>
-                            <td>{data.Salary}</td>
+                            <td>{data.Salary.toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0})}</td>
                             <td>
                                 <Link to={`update/${data.ID}`} className='btn btn-primary'>Edit</Link>
                                 <button className='btn btn-danger ms-2' onClick={e =>handleDelete(data.ID) }>Delete</button>
