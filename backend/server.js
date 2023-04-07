@@ -3,6 +3,7 @@ const cors = require("cors");
 const mysql = require("mysql");
 
 const app = express();
+app.use(express.json());
 
 app.use(cors());
 
@@ -17,6 +18,19 @@ app.get("/", (req, res) => {
     const sql = "SELECT * FROM employees";
     db.query(sql, (err, data) => {
         if (err) return res.json("Error");
+        return res.json(data);
+    })
+})
+
+app.post('/create', (req, res) => {
+    const sql = "INSERT INTO employees (`Firstname`, `Lastname`, `Salary`) VALUES (?)";
+    const values = [
+        req.body.firstname,
+        req.body.lastname,
+        req.body.salary
+    ]
+    db.query(sql, [values], (err, data) =>{
+        if(err) return res.json("Error");
         return res.json(data);
     })
 })
