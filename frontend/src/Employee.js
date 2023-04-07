@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
+
 function Employee() {
     const [employee, setEmployee] = useState([])
     useEffect(() => {
@@ -11,7 +13,7 @@ function Employee() {
   return (
     <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
       <div className='w-50 bg-white rounded p-3'>
-        <button className='btn btn-success'>Add +</button>
+        <Link to="/create" className='btn btn-success'>Add Employee</Link>
         <table className='table'>
             <thead>
                 <tr>
