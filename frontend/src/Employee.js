@@ -33,7 +33,7 @@ function Employee() {
                             <td>{data.Lastname}</td>
                             <td>{data.Salary}</td>
                             <td>
-                                <button className='btn btn-primary'>Edit</button>
+                                <Link to={`update/${data.ID}`} className='btn btn-primary'>Edit</Link>
                                 <button className='btn btn-danger ms-2'>Delete</button>
                             </td>
                         </tr>
