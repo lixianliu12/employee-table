@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const fs = require('fs');
 const mysql = require("mysql");
 
 const app = express();
@@ -13,6 +14,17 @@ const db = mysql.createConnection({
     password:"",
     database:"test"
 })
+
+const data = JSON.parse(fs.readFileSync('data.json')).employees;
+data.forEach((item) => {
+    const sql = "INSERT INTO employees (`Firstname`, `Lastname`, `Salary`) VALUES (?, ?, ?)";
+    const values = [item.firstName, item.lastName, item.salary];
+
+    db.query(sql, values, (err, result) => {
+        if (err) throw err;
+        console.log("Data inserted successfully");
+    });
+});
 
 app.get("/", (req, res) => {
     const sql = "SELECT * FROM employees";
