@@ -17,12 +17,23 @@ const db = mysql.createConnection({
 
 const data = JSON.parse(fs.readFileSync('data.json')).employees;
 data.forEach((item) => {
-    const sql = "INSERT INTO employees (`Firstname`, `Lastname`, `Salary`) VALUES (?, ?, ?)";
+    const sql = "SELECT * FROM employees WHERE Firstname = ? AND Lastname = ? AND Salary = ?";
     const values = [item.firstName, item.lastName, item.salary];
 
     db.query(sql, values, (err, result) => {
         if (err) throw err;
-        console.log("Data inserted successfully");
+
+        if (result.length === 0) {
+            const insertSql = "INSERT INTO employees (`Firstname`, `Lastname`, `Salary`) VALUES (?, ?, ?)";
+            const insertValues = [item.firstName, item.lastName, item.salary];
+
+            db.query(insertSql, insertValues, (err, result) => {
+                if (err) throw err;
+                console.log("Data inserted successfully");
+            });
+        } else {
+            console.log("Data already exists, skipping insertion");
+        }
     });
 });
 
